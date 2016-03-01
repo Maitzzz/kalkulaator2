@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,5 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         String str = button.getText().toString();
 
+        EditText screen = (EditText)findViewById(R.id.editText);
+
+        screen.setText(str);
     }
 }
