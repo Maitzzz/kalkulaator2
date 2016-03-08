@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+    Calculator calc = new Calculator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,19 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void OnOperator(View v) {
+        Button button = (Button)v;
+
+        String operator = button.getText().toString();
+
+        EditText screen = (EditText)findViewById(R.id.editText);
+
+        calc.setOperator(operator);
+
+        calc.setX(Float.parseFloat(screen.getText().toString()));
+        screen.setText("");
+    }
+
     public void OnClick(View v) {
         Button button = (Button)v;
 
@@ -50,6 +64,31 @@ public class MainActivity extends AppCompatActivity {
 
         EditText screen = (EditText)findViewById(R.id.editText);
 
-        screen.setText(str);
+        screen.setText(screen.getText() + str);
+    }
+
+    public void setScreen(String value) {
+        EditText screen = (EditText)findViewById(R.id.editText);
+
+        screen.setText(value);
+    }
+
+    public void OnDelete(View v) {
+        EditText screen = (EditText)findViewById(R.id.editText);
+        screen.setText("");
+    }
+
+    public void OnEquals(View v) {
+        EditText screen = (EditText)findViewById(R.id.editText);
+
+        calc.setY(Float.parseFloat(screen.getText().toString()));
+
+        float total = calc.calc(calc.getOperator());
+
+        setScreen(Float.toString(total));
+
+        calc.setX(null);
+        calc.setY(null);
+        calc.setOperator(null);
     }
 }

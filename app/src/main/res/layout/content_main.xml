@@ -11,21 +11,34 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.maitroosvalt.calc.MainActivity"
     tools:showIn="@layout/activity_main">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/number"
         >
 
         <EditText
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
             android:id="@+id/editText"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            />
 
-    </RelativeLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C"
+            android:id="@+id/buttonDelete"
+            android:clickable="false"
+            android:onClick="OnDelete"
+            android:background="@drawable/button"
+            android:textSize="15sp"
+            android:layout_toRightOf="@id/editText"/>
+        />
+    </LinearLayout>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/butons"
@@ -35,9 +48,10 @@
         >
 
         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:stretchColumns="*">
+            android:stretchColumns="*"
+            android:shrinkColumns="*">
             <TableRow>
                 <Button
                     android:layout_width="wrap_content"
@@ -73,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:text="-"
                     android:id="@+id/buttonMinus"
-                    android:onClick="OnClick"
+                    android:onClick="OnOperator"
                     android:background="@drawable/button_actions"
                     android:textSize="15sp"
                     />
@@ -111,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:text="+"
                     android:id="@+id/buttonPlus"
-                    android:onClick="OnClick"
+                    android:onClick="OnOperator"
                     android:background="@drawable/button_actions"
                     android:textSize="15sp"/>
             </TableRow>
@@ -150,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:text="*"
                     android:id="@+id/buttonMultiply"
-                    android:onClick="OnClick"
+                    android:onClick="OnOperator"
                     android:background="@drawable/button_actions"
                     android:textSize="15sp"/>
                 />
@@ -169,8 +183,8 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Delete"
-                    android:id="@+id/buttonDelete"
+                    android:text="."
+                    android:id="@+id/buttonFloat"
                     android:onClick="OnClick"
                     android:background="@drawable/button_delete"
                     android:textSize="20sp"/>
@@ -180,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:text="="
                     android:id="@+id/buttonEquals"
-                    android:onClick="OnClick"
+                    android:onClick="OnEquals"
                     android:background="@drawable/button_equals"
                     android:textSize="15sp"
                     />
@@ -190,7 +204,7 @@
                     android:layout_height="wrap_content"
                     android:text="/"
                     android:id="@+id/ButtonDivide"
-                    android:onClick="OnClick"
+                    android:onClick="OnOperator"
                     android:background="@drawable/button_actions"
                     android:textSize="15sp"/>
                 />
