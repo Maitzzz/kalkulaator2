@@ -34,7 +34,7 @@
             android:layout_marginBottom="5dp"
             android:id="@+id/buttonDelete"
             android:clickable="false"
-            android:onClick="OnDelete"
+            android:onClick="broadcastIntent"
             android:textSize="15sp"
             android:layout_toRightOf="@id/editText"/>
         />
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:text="-"
                     android:id="@+id/buttonMinus"
-                    android:onClick="OnOperator"
+                    android:onClick="broadcastIntent"
                     android:background="@drawable/button_actions"
                     android:textSize="15sp"
                     />
@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:text="+"
                     android:id="@+id/buttonPlus"
-                    android:onClick="OnOperator"
+                    android:onClick="broadcastIntent"
                     android:background="@drawable/button_actions"
                     android:textSize="15sp"/>
             </TableRow>
@@ -179,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:text="*"
                     android:id="@+id/buttonMultiply"
-                    android:onClick="OnOperator"
+                    android:onClick="broadcastIntent"
                     android:background="@drawable/button_actions"
                     android:textSize="15sp"/>
                 />
@@ -212,7 +212,7 @@
                     android:text="="
                     android:layout_marginRight="5dp"
                     android:id="@+id/buttonEquals"
-                    android:onClick="OnEquals"
+                    android:onClick="broadcastIntent"
                     android:background="@drawable/button_equals"
                     android:textSize="15sp"
                     />
@@ -222,7 +222,7 @@
                     android:layout_height="wrap_content"
                     android:text="/"
                     android:id="@+id/ButtonDivide"
-                    android:onClick="OnOperator"
+                    android:onClick="broadcastIntent"
                     android:background="@drawable/button_actions"
                     android:textSize="15sp"/>
                 />

@@ -1,5 +1,9 @@
 package com.example.maitroosvalt.calc;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,8 +15,11 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.sql.Struct;
+
 public class MainActivity extends AppCompatActivity {
     Calculator calc = new Calculator();
+    private static String TEST_TEST = "test";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +51,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void OnOperator(View v) {
-        Button button = (Button)v;
-
-        String operator = button.getText().toString();
-
-        EditText screen = (EditText)findViewById(R.id.editText);
-
-        calc.setOperator(operator);
-
-        calc.setX(Float.parseFloat(screen.getText().toString()));
-        screen.setText("");
-    }
-
     public void OnClick(View v) {
         Button button = (Button)v;
 
@@ -78,17 +72,29 @@ public class MainActivity extends AppCompatActivity {
         screen.setText("");
     }
 
-    public void OnEquals(View v) {
+    public void broadcastIntent(View view)
+    {
+        Button button = (Button)view;
+        String str = button.getText().toString();
+
         EditText screen = (EditText)findViewById(R.id.editText);
+        String scr = screen.getText().toString();
 
-        calc.setY(Float.parseFloat(screen.getText().toString()));
+        Intent intent = new Intent();
+        intent.setAction("com.calculator.CALCULATOR");
+        intent.putExtra("button", str);
+        intent.putExtra("screen", scr);
+        sendOrderedBroadcast(intent, null, new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent2) {
+                Bundle results = getResultExtras(true);
+                Integer ints = results.getInt("screen_val", -1);
 
-        float total = calc.calc(calc.getOperator());
-
-        setScreen(Float.toString(total));
-
-        calc.setX(null);
-        calc.setY(null);
-        calc.setOperator(null);
+                String srt = results.getString("screen_val");
+                setScreen(results.getString("screen_val"));
+            }
+        }, null, Activity.RESULT_OK, null, null);
+        //Intent, String, BroadcastReceiver, Handler, int, String, Bundle)}
     }
+
 }

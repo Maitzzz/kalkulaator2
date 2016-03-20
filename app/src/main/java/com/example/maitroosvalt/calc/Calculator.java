@@ -12,7 +12,7 @@ public class Calculator
     private Float total;
     private static Float x;
     private static Float y;
-    private String operator;
+    private static String operator;
 
     public Calculator()
     {
@@ -41,7 +41,7 @@ public class Calculator
         float x = this.x;
         float y = this.y;
 
-        switch(ops.toString())
+        switch(ops)
         {
             case("+"):
                 this.total = addition(x, y);
