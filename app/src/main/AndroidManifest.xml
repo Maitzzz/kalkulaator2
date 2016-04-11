@@ -2,12 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.maitroosvalt.calc" >
 
-    <receiver android:name=".CalculatorReceiver" >
+    <receivper android:name=".CalculatorReceiver" >
         <intent-filter>
             <action android:name="com.calculator.CALCULATOR" >
             </action>
         </intent-filter>
-    </receiver>
+    </receivper>
 
     <application
         android:allowBackup="true"
