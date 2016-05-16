@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         String scr = screen.getText().toString();
 
         Intent intent = new Intent();
-        intent.setAction("com.calculator.CALCULATOR");
+        intent.setAction("com.mait.calculator.CALCULATE");
         intent.putExtra("button", str);
         intent.putExtra("screen", scr);
         sendOrderedBroadcast(intent, null, new BroadcastReceiver() {
